@@ -1,4 +1,4 @@
-use clap::{builder::ValueParser, Arg, Command};
+use clap::{value_parser, Arg, Command};
 
 fn main() {
     let matches = Command::new("echor")
@@ -6,22 +6,26 @@ fn main() {
         .author("Bill Hilbert <billmakes@protonmail.com>")
         .about("Rust echo")
         .arg(
-            Arg::with_name("text")
+            Arg::new("text")
                 .value_name("TEXT")
+                .value_parser(value_parser!(String))
                 .help("Input text")
-                .value_parser(ValueParser::os_string())
                 .required(true)
                 .min_values(1),
         )
         .arg(
-            Arg::with_name("omit_newline")
+            Arg::new("omit_newline")
                 .short('n')
                 .help("Do not print newline")
                 .takes_value(false),
         )
         .get_matches();
 
-    let text = matches.values_of_lossy("text").unwrap();
-    let omit_newline = matches.is_present("omit_newline");
+    let text: Vec<String> = matches
+        .get_many("text")
+        .expect("`text` is required")
+        .cloned()
+        .collect();
+    let omit_newline = matches.contains_id("omit_newline");
     print! {"{}{}", text.join(" "), if omit_newline {""} else {"\n"}};
 }
