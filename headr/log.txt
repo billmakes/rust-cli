@@ -1,0 +1,116 @@
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 57 tests
+test empty_n4 ... ok
+test empty ... ok
+test empty_c2 ... ok
+test empty_n2 ... ok
+test empty_c4 ... ok
+test dies_bytes_and_lines ... FAILED
+test dies_bad_lines ... FAILED
+test multiple_files ... ok
+test multiple_files_c2 ... ok
+test multiple_files_c1 ... ok
+test dies_bad_bytes ... ok
+test one ... ok
+test multiple_files_c4 ... ok
+test one_c2 ... ok
+test multiple_files_n2 ... ok
+test multiple_files_n4 ... ok
+test one_c1 ... ok
+test one_c1_stdin ... ok
+test one_c2_stdin ... ok
+test one_n2 ... ok
+test one_n2_stdin ... ok
+test one_n4 ... ok
+test one_n4_stdin ... ok
+test one_stdin ... ok
+test one_c4 ... ok
+test one_c4_stdin ... ok
+test ten ... ok
+test ten_c2_stdin ... ok
+test ten_c2 ... ok
+test ten_c4_stdin ... ok
+test ten_c4 ... ok
+test ten_n2 ... ok
+test three ... ok
+test ten_n4_stdin ... ok
+test three_c4 ... ok
+test three_c2 ... ok
+test three_n4 ... ok
+test three_c2_stdin ... ok
+test three_n2 ... ok
+test three_c4_stdin ... ok
+test three_n2_stdin ... ok
+test three_n4_stdin ... ok
+test two ... ok
+test two_c2 ... ok
+test skips_bad_file ... ok
+test three_stdin ... ok
+test two_c4 ... ok
+test two_c2_stdin ... ok
+test two_n2 ... ok
+test two_c4_stdin ... ok
+test two_n2_stdin ... ok
+test two_n4 ... ok
+test two_n4_stdin ... ok
+test two_stdin ... ok
+test ten_n4 ... ok
+test ten_n2_stdin ... ok
+test ten_stdin ... ok
+
+failures:
+
+---- dies_bytes_and_lines stdout ----
+thread 'dies_bytes_and_lines' panicked at 'Unexpected stderr, failed var.contains(The argument '--lines <LINES>' cannot be used with '--bytes <BYTES>')
+├── var: error: The argument '--lines <lines>' cannot be used with '--bytes <BYTES>'
+│   
+│   USAGE:
+│       headr --lines <lines>
+│   
+│   For more information try --help
+└── var as str: error: The argument '--lines <lines>' cannot be used with '--bytes <BYTES>'
+    
+    USAGE:
+        headr --lines <lines>
+    
+    For more information try --help
+
+command=`"/home/bill/cl-rust/me/headr/target/debug/headr" "-n" "1" "-c" "2"`
+code=2
+stdout=""
+stderr="error: The argument \'--lines <lines>\' cannot be used with \'--bytes <BYTES>\'\n\nUSAGE:\n    headr --lines <lines>\n\nFor more information try --help\n"
+', /rustc/4b91a6ea7258a947e59c6522cd5898e7c0a6a88f/library/core/src/ops/function.rs:248:5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- dies_bad_lines stdout ----
+thread 'dies_bad_lines' panicked at 'Unexpected stderr, failed var.contains(illegal line count -- IdAtqcp)
+├── var: error: Invalid value "IdAtqcp" for '--lines <lines>': invalid digit found in string
+│   
+│   For more information try --help
+└── var as str: error: Invalid value "IdAtqcp" for '--lines <lines>': invalid digit found in string
+    
+    For more information try --help
+
+command=`"/home/bill/cl-rust/me/headr/target/debug/headr" "-n" "IdAtqcp" "./tests/inputs/empty.txt"`
+code=2
+stdout=""
+stderr="error: Invalid value \"IdAtqcp\" for \'--lines <lines>\': invalid digit found in string\n\nFor more information try --help\n"
+', /rustc/4b91a6ea7258a947e59c6522cd5898e7c0a6a88f/library/core/src/ops/function.rs:248:5
+
+
+failures:
+    dies_bad_lines
+    dies_bytes_and_lines
+
+test result: FAILED. 55 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
