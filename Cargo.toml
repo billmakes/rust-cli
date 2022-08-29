@@ -1,2 +1,2 @@
 [workspace]
-members = ["catr", "echor", "headr", "hello", "uniqr", "wcr"]
+members = ["catr", "echor", "headr", "hello", "uniqr", "wcr", "findr"]
